@@ -1,4 +1,3 @@
-
 Node a1, a2, a3, a4, a5, a6, a7;
 Edge e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11;
 ArrayList<Node> nodes = new ArrayList<Node>();
@@ -436,6 +435,8 @@ void destroyer(){
     edges.remove(0);
   }
 }
+
+// this method doesn't work so far
 void eulerian(){
   int numNodes=nodes.size();
   int eulerian=0;
