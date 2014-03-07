@@ -12,9 +12,11 @@ PImage img;
 
 void setup() {
   img=loadImage("dijkstraAlgorithm.jpg");
+  //detect the key press for the first node
   one=-1;
+  //detect the key press for the second node
   two=-1;
-
+  //initialize the size of the application
   size(800, 500);
   background(#FADC88);
   smooth();
@@ -114,6 +116,7 @@ void draw() {
    }
 }
 
+//create nodes, takes in position and a number representation
 public class Node {
   ArrayList<Edge> connectedEdges=new ArrayList<Edge>();
   float x, y;
@@ -128,6 +131,7 @@ public class Node {
     distance=Integer.MAX_VALUE;
   }
 
+  //add the checked age into an array as checked edge
   public void addEdge(Edge e) {
     connectedEdges.add(e);
   }
@@ -145,6 +149,7 @@ public class Node {
     distance=i;
   }
 
+  //set the sdistance between two chosen nodes
   public void setDistance(Node previousNode) {
     ///////////////////////
     for (Edge e:connectedEdges) {
@@ -231,6 +236,7 @@ public class Node {
     }
   }
 }
+//construct the edges between nodes
 public class Edge {
   ArrayList<Node> nodesInEdge;
   Node a, b;
@@ -298,6 +304,7 @@ public class Edge {
   }
 }
 
+//shortest distance finding algorithm
 public class Dijkstra {
   ArrayList<Node> nodes;
   ArrayList<Edge> edges;
@@ -326,7 +333,7 @@ public class Dijkstra {
       n.render();
     }
   }
-
+  //find the shortest distance with in unchecked nodes
   public Node getNodeWithLowestDistance(ArrayList<Node> unsettledNodes) {
     Node no=unsettledNodes.get(0);
     for (Node n:unsettledNodes) {
@@ -336,7 +343,7 @@ public class Dijkstra {
     }
     return no;
   }
-
+  //evaluate all the edges connecte to the chosen node and return the edge with the shortest distance
   public void evaluatedNeighbors(Node evaluationNode) {
     for (Node d:evaluationNode.destinationNodes()) {
       for (Node s:settledNodes) {
@@ -378,6 +385,7 @@ public class Dijkstra {
       e.edgeColor=false;
     }
   }
+  //helper methods that helps to find the shortest diance between two nodes after running through dijkstra
   public void traceBack(Node end, Node start) {
     Node vertex=end;
     while (vertex.getDistance ()!=0) {
@@ -386,6 +394,7 @@ public class Dijkstra {
   }
   
 }
+//random map generator
 void creater(){
       int i=0;
   while (i<10) {
